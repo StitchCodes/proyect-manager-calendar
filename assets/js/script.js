@@ -1,49 +1,63 @@
-// Get OR Create Elements
+// Get OR Create GLOBAL Elements
 var container = $(".container");
 var day = $("#currentDay");
+var dataval = 0;
 
-// Declare Variables
-
-// Create Time and list for time
-var hours24 = []
-
-for (i = 9; i < 17; i++) {
-    var hourcreate = [i];
-    hours24.push(hourcreate++);
-
+// FUNCTION TO CREATE ELEMENTS
+function createEl (i) {
+    // CREATE ELEMENTS
     var section = document.createElement("section");
-    $("section").addClass("hour row");
-    section.innerHTML = "<p>" + hourcreate + ":00 </p>";
-    
     var textarea = document.createElement("textarea");
-    $("textarea").attr("data-box", hourcreate);
-    $("textarea").addClass("flex-fill past");
-
     var button = document.createElement("button");
-    $("button").attr("data-save", hourcreate)
-    button.innerHTML = "&#x23FA";
+    var p = document.createElement("p")
 
+    // ADD/CREATE TEXT
+    p.innerHTML = i + ":00";
+    button.innerHTML = '&#x23FA'; 
+
+    // CALL APPEND FUNCTION
     container.append(section);
-    section.appendChild(textarea);
-    section.appendChild(button);
-    button.addEventListener("click", storeTask);
-}
+    section.append(p);
+    section.append(textarea);
+    section.append(button);
+
+     // ADD CLASS
+    $("section").addClass("row past");
+    $("p").addClass("hour");
+    $("textarea").addClass("flex-fill past");
+    $("button").addClass("saveBtn");
+    // ADD ATTRIBUTES
+    $("textarea").attr("data-box", dataval);
+    $("button").data("save", 1);
+};
+
+
+// FOR LOOPS
+// CREATE ENOUGH ELEMENTS
+for (i=10; i < 18; i++) {
+    // CALL CREATE ELEMENTS FUNCTION
+    createEl(i);
+};
+// CREATE DATA VALUES
+for (let i = 0; i < 9; i++) {
+    dataval = [i];
+    console.log(dataval);  
+};
 
 // STORE TASK FUNCTION
 function storeTask (event) {
-    var saveBtnClick = event.target;
-    console.log("You clicked: ",saveBtnClick);
+    var target = event.target;
+    console.log("You clicked: ", target);
 
-    var test = saveBtnClick
-    console.log(test);
     // IF EVENT CLICK SAVE EVENT BOX DATA
     // $(this).find(':selected').data('box');
 
-    localStorage.getItem("task", "text from box");
-}
+    // localStorage.getItem("task", "text from box");
+};
 
-// Display Current Time
-setInterval( function(){ 
+// DISPLAY LOCAL TIME
+setInterval( function() { 
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    day.addClass("time-block hour");
     day.text(time);
 }, 1000);
