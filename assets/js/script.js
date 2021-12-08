@@ -1,20 +1,19 @@
 // Get OR Create Elements
 var container = $(".container");
 var day = $("#currentDay");
-var ul = document.createElement("ul");
-container.append(ul);
 
 // Declare Variables
 
 // Create Time and list for time
 var hours24 = []
 
-for (i = 0; i < 24; i++) {
+for (i = 9; i < 17; i++) {
     var hourcreate = [i];
     hours24.push(hourcreate++);
-    var li = document.createElement("li");
-    li.innerHTML = hourcreate + ":00";
-    ul.appendChild(li);
+    var section = document.createElement("section");
+    $("section").addClass("hour row");
+    section.innerHTML = hourcreate + ":00";
+    container.append(section);
 }
 
 // Display Current Time
