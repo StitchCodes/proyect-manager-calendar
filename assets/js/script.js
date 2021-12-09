@@ -1,7 +1,7 @@
 // Get OR Create GLOBAL Elements
 var container = $(".container");
 var day = $("#currentDay");
-var dataval = 0;
+var dataval = 1;
 
 // FUNCTION TO CREATE ELEMENTS
 function createEl (i) {
@@ -27,7 +27,7 @@ function createEl (i) {
     $("textarea").addClass("flex-fill past");
     $("button").addClass("saveBtn");
     // ADD ATTRIBUTES
-    $("textarea").attr("data-box", dataval);
+    $("textarea").attr("data-box", 1);
     $("button").data("save", 1);
 };
 
@@ -39,9 +39,9 @@ for (i=10; i < 18; i++) {
     createEl(i);
 };
 // CREATE DATA VALUES
-for (let i = 0; i < 9; i++) {
-    dataval = [i];
-    console.log(dataval);  
+for (let i = 1; i < 10; i++) {
+    dataval += [i];
+    console.log(dataval[i]);  
 };
 
 // STORE TASK FUNCTION
