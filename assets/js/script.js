@@ -42,9 +42,9 @@ for (let i=10; i < 18; i++) {
 };
 
 for (let i = 10; i < 18; i++) {
-    var momentHour = moment().set('hour', i);
-    var roundHour = momentHour.add(30, "minutes").startOf("hour");
-    hour = roundHour;
+    var momentHour = moment().set('hour', i).format("HH:00");
+    // var roundHour = momentHour.add(30, "minutes").startOf("hour");
+    hour = momentHour;
     createEl(hour);
 }
 
