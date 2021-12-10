@@ -13,7 +13,7 @@ function createEl (hour) {
     var p = document.createElement("p")
     
     // ADD/CREATE TEXT
-    p.innerHTML = hour + ":00";
+    p.innerHTML = hour;
     button.innerHTML = '&#x23FA'; 
     
     // CALL APPEND FUNCTION
@@ -36,16 +36,24 @@ function createEl (hour) {
 // FOR LOOPS
 // CREATE ENOUGH ELEMENTS
 for (let i=10; i < 18; i++) {
-    hour = i;
+    // hour = i;
     // CALL CREATE ELEMENTS FUNCTION
-    createEl(hour);
+    
 };
+
+for (let i = 10; i < 18; i++) {
+    var momentHour = moment().set('hour', i);
+    var roundHour = momentHour.add(30, "minutes").startOf("hour");
+    hour = roundHour;
+    createEl(hour);
+}
 
 
 // STORE TASK FUNCTION
 function storeTask () {
     var target = $(this).find(":selected").data("save");
     console.log("You clicked: ", this);
+    console.log("target is: ", target);
 
     // IF EVENT CLICK SAVE EVENT BOX DATA
     // $(this).find(':selected').data('box');
