@@ -21,28 +21,23 @@ function createEl (i) {
     section.append(textarea);
     section.append(button);
 
-     // ADD CLASS
+     // ADD CLASS & ATTRIBUTES
     $("section").addClass("row past");
     $("p").addClass("hour");
     $("textarea").addClass("flex-fill past");
+    $("textarea").attr("data-box", i);
     $("button").addClass("saveBtn");
-    // ADD ATTRIBUTES
-    $("textarea").attr("data-box", 1);
-    $("button").data("save", 1);
+    $("button").attr("data-save", i);
 };
 
 
 // FOR LOOPS
 // CREATE ENOUGH ELEMENTS
-for (i=10; i < 18; i++) {
+for (let i=10; i < 18; i++) {
     // CALL CREATE ELEMENTS FUNCTION
     createEl(i);
 };
-// CREATE DATA VALUES
-for (let i = 1; i < 10; i++) {
-    dataval += [i];
-    console.log(dataval[i]);  
-};
+
 
 // STORE TASK FUNCTION
 function storeTask (event) {
