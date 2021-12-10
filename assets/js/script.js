@@ -45,13 +45,10 @@ for (let i = 10; i < 18; i++) {
 
 // STORE TASK FUNCTION
 function storeTask () {
-    var target = $(this).find(":selected").data("save");
-    console.log("You clicked: ", $("textarea").val());
+    var target = $("textarea").val();
     console.log("target is: ", target);
 
     // IF EVENT CLICK SAVE EVENT BOX DATA
-    // $(this).find(':selected').data('box');
-
     // localStorage.getItem("task", "text from box");
 };
 
