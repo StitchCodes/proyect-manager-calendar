@@ -1,54 +1,61 @@
 // Get OR Create GLOBAL Elements
 var container = $(".container");
 var day = $("#currentDay");
-var dataval = 1;
+var hour;
+
 
 // FUNCTION TO CREATE ELEMENTS
-function createEl (i) {
+function createEl (hour) {
     // CREATE ELEMENTS
     var section = document.createElement("section");
     var textarea = document.createElement("textarea");
     var button = document.createElement("button");
     var p = document.createElement("p")
-
+    
     // ADD/CREATE TEXT
-    p.innerHTML = i + ":00";
+    p.innerHTML = hour + ":00";
     button.innerHTML = '&#x23FA'; 
-
+    
     // CALL APPEND FUNCTION
     container.append(section);
     section.append(p);
     section.append(textarea);
     section.append(button);
 
-     // ADD CLASS & ATTRIBUTES
+    // ADD CLASS & ATTRIBUTES
     $("section").addClass("row past");
     $("p").addClass("hour");
     $("textarea").addClass("flex-fill past");
-    $("textarea").attr("data-box", i);
+    $("textarea").attr("data-box", hour);
     $("button").addClass("saveBtn");
-    $("button").attr("data-save", i);
+    $("button").attr("data-save", hour);
+
 };
 
 
 // FOR LOOPS
 // CREATE ENOUGH ELEMENTS
 for (let i=10; i < 18; i++) {
+    hour = i;
     // CALL CREATE ELEMENTS FUNCTION
-    createEl(i);
+    createEl(hour);
 };
 
 
 // STORE TASK FUNCTION
-function storeTask (event) {
-    var target = event.target;
-    console.log("You clicked: ", target);
+function storeTask () {
+    var target = $(this).find(":selected").data("save");
+    console.log("You clicked: ", this);
 
     // IF EVENT CLICK SAVE EVENT BOX DATA
     // $(this).find(':selected').data('box');
 
     // localStorage.getItem("task", "text from box");
 };
+
+    
+// EVENT LISTENER
+$(".saveBtn").click(storeTask);
 
 // DISPLAY LOCAL TIME
 setInterval( function() { 
