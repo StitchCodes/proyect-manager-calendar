@@ -35,16 +35,12 @@ function createEl (hour) {
 
 // FOR LOOPS
 // CREATE ENOUGH ELEMENTS
-for (let i=10; i < 18; i++) {
-    // hour = i;
-    // CALL CREATE ELEMENTS FUNCTION
-    
-};
 
 for (let i = 10; i < 18; i++) {
     var momentHour = moment().set('hour', i).format("HH:00");
     // var roundHour = momentHour.add(30, "minutes").startOf("hour");
     hour = momentHour;
+    // CALL TO CREATE ELEMENTS 
     createEl(hour);
 }
 
