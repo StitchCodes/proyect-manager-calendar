@@ -33,22 +33,20 @@ function createEl (hour) {
 };
 
 
-// FOR LOOPS
 // CREATE ENOUGH ELEMENTS
 
 for (let i = 10; i < 18; i++) {
     var momentHour = moment().set('hour', i).format("HH:00");
-    // var roundHour = momentHour.add(30, "minutes").startOf("hour");
     hour = momentHour;
     // CALL TO CREATE ELEMENTS 
     createEl(hour);
-}
+};
 
 
 // STORE TASK FUNCTION
 function storeTask () {
     var target = $(this).find(":selected").data("save");
-    console.log("You clicked: ", this);
+    console.log("You clicked: ", $("textarea").val());
     console.log("target is: ", target);
 
     // IF EVENT CLICK SAVE EVENT BOX DATA
@@ -62,8 +60,14 @@ function storeTask () {
 $(".saveBtn").click(storeTask);
 
 // DISPLAY LOCAL TIME
-setInterval( function() { 
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    day.addClass("time-block hour");
-    day.text(time);
-}, 1000);
+function currentTime () {
+    setInterval( function() { 
+        var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+        day.addClass("time-block hour");
+        day.text(time);
+    }, 1000);
+};
+
+
+// EVENT CALLS ON DOCUMENT LOAD
+currentTime();
